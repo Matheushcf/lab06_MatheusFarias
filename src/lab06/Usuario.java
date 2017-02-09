@@ -1,42 +1,46 @@
 package lab06;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Usuario {
 	private String nome;
 	private String login;
-	private double carteira;
-	private ArrayList<Jogo> jogos;
+	private double carteira = 0;
+	protected HashSet<Jogo> jogos;
+	protected int x2p;
 
-	public Usuario(String nome, String login, double carteira) {
+	public Usuario(String nome, String login) {
 		this.nome = nome;
 		this.login = login;
-		this.carteira = carteira;
-		this.jogos = new ArrayList<>();
+		jogos = new HashSet<>();
 	}
-
-	public enum tipoUsuario {
-		Noob(10), Veterano(20); 
-
-		private int valor;
-
-		tipoUsuario(int valor) {
-			this.valor = valor;
+	
+	public int registraJogada(String nomeJogo, int score, int zerou){
+		
+	}
+	
+	public Jogo buscaJogo(String nomeJogo){
+		for(Jogo e: jogos){
+			if (nomeJogo.equals(e.getNome())){
+				return e;
+			}
 		}
-
-		public int getValor() {
-			return this.valor;
-		}
-
+		return null;
 	}
 
 	public void adicionaFundos(double valor) {
 		carteira += valor;
 	}
-
-	public void comprarJogo(String nome, double preco, int pontuacao, int vezesJogadas, int zerar) {
-		Jogo game = new Jogo(nome, preco, pontuacao, vezesJogadas, zerar);
-		jogos.add(game);
+	
+	public String getNome(){
+		return this.nome;
 	}
-
+	
+	public String getLogin(){
+		return this.login;
+	}
+	
+	public double getCarteira(){
+		return this.carteira;
+	}
 }
