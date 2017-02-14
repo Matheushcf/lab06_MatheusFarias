@@ -8,7 +8,7 @@ public class Veterano extends Usuario{
 	}
 	
 	public boolean comprarJogo(Jogo jogo){
-		if(super.getCarteira() >= jogo.getPreco() * 0.8){
+		if(super.getSaldo() >= jogo.getPreco() * 0.8){
 			super.jogos.add(jogo);
 			adicionaX2P(jogo.getPreco());
 			return true;

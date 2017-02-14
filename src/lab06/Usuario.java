@@ -5,18 +5,20 @@ import java.util.HashSet;
 public class Usuario {
 	private String nome;
 	private String login;
-	private double carteira = 0;
+	private double saldo = 0;
 	protected HashSet<Jogo> jogos;
 	protected int x2p;
-
+	
 	public Usuario(String nome, String login) {
 		this.nome = nome;
 		this.login = login;
 		jogos = new HashSet<>();
+		this.x2p = 0;
 	}
 	
-	public int registraJogada(String nomeJogo, int score, int zerou){
-		
+	public void registraJogada(String nomeJogo, int score, boolean zerar) throws Exception{
+		Jogo game = buscaJogo(nomeJogo);
+		game.registraJogada(score, zerar);
 	}
 	
 	public Jogo buscaJogo(String nomeJogo){
@@ -28,8 +30,8 @@ public class Usuario {
 		return null;
 	}
 
-	public void adicionaFundos(double valor) {
-		carteira += valor;
+	public void setSaldo(double valor) {
+		saldo += valor;
 	}
 	
 	public String getNome(){
@@ -40,7 +42,7 @@ public class Usuario {
 		return this.login;
 	}
 	
-	public double getCarteira(){
-		return this.carteira;
+	public double getSaldo(){
+		return this.saldo;
 	}
 }

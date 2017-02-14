@@ -7,8 +7,8 @@ public class Noob extends Usuario{
 		x2p = 0;
 	}
 	
-	public boolean comprarJogo(Jogo jogo){
-		if(super.getCarteira() >= jogo.getPreco() * 0.9){
+	public boolean comprarJogo(Jogo jogo){		
+		if(super.getSaldo() >= jogo.getPreco() * 0.9){
 			super.jogos.add(jogo);
 			adicionaX2P(jogo.getPreco());
 			return true;
